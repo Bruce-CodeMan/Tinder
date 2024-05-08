@@ -11,6 +11,9 @@
 		047955392BEB235000B5E7EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047955382BEB235000B5E7EC /* ContentView.swift */; };
 		0479553B2BEB235200B5E7EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0479553A2BEB235200B5E7EC /* Assets.xcassets */; };
 		0479553E2BEB235200B5E7EC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0479553D2BEB235200B5E7EC /* Preview Assets.xcassets */; };
+		047955452BEB52FF00B5E7EC /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047955442BEB52FF00B5E7EC /* AppState.swift */; };
+		0479554A2BEB56EB00B5E7EC /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047955492BEB56EB00B5E7EC /* TabItem.swift */; };
+		0479554C2BEB573A00B5E7EC /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479554B2BEB573A00B5E7EC /* CustomTabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		047955382BEB235000B5E7EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0479553A2BEB235200B5E7EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0479553D2BEB235200B5E7EC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		047955442BEB52FF00B5E7EC /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		047955492BEB56EB00B5E7EC /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		0479554B2BEB573A00B5E7EC /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +57,10 @@
 		047955352BEB235000B5E7EC /* Tinder */ = {
 			isa = PBXGroup;
 			children = (
+				047955482BEB56D300B5E7EC /* ViewModel */,
+				047955472BEB56CD00B5E7EC /* View */,
+				047955462BEB56C500B5E7EC /* Model */,
 				047955362BEB235000B5E7EC /* TinderApp.swift */,
-				047955382BEB235000B5E7EC /* ContentView.swift */,
 				0479553A2BEB235200B5E7EC /* Assets.xcassets */,
 				0479553C2BEB235200B5E7EC /* Preview Content */,
 			);
@@ -65,6 +73,31 @@
 				0479553D2BEB235200B5E7EC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		047955462BEB56C500B5E7EC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				047955492BEB56EB00B5E7EC /* TabItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		047955472BEB56CD00B5E7EC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				047955382BEB235000B5E7EC /* ContentView.swift */,
+				0479554B2BEB573A00B5E7EC /* CustomTabBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		047955482BEB56D300B5E7EC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				047955442BEB52FF00B5E7EC /* AppState.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +170,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				047955452BEB52FF00B5E7EC /* AppState.swift in Sources */,
+				0479554C2BEB573A00B5E7EC /* CustomTabBar.swift in Sources */,
 				047955392BEB235000B5E7EC /* ContentView.swift in Sources */,
+				0479554A2BEB56EB00B5E7EC /* TabItem.swift in Sources */,
 				047955372BEB235000B5E7EC /* TinderApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
