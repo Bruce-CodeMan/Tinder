@@ -1,48 +1,84 @@
 import SwiftUI
 
+// Main content view of the application
 struct ContentView: View {
-    
-    // 导航栏数组
-    var tabs: [TabBarItem] = [
-        TabBarItem(title: "Home", icon: "rectangle.fill.on.rectangle.fill"),
-        TabBarItem(title: "Live", icon: "play.tv.fill"),
-        TabBarItem(title: "Message", icon: "message.fill"),
-        TabBarItem(title: "Profile", icon: "person.fill")
-    ]
-    
-    // 记住用户的选择
-    @State var selection: TabBarItem = TabBarItem(title: "Home", icon: "rectangle.fill.on.rectangle.fill")
+    // State variable to remember the user's tab selection
+    @State private var selection: TabItem = .home
     
     var body: some View {
         VStack{
+            currentView(for: selection)
             Spacer()    // 占用最大的空间
-            HStack {
-                ForEach(tabs, id: \.self) { tab in
-                    createTabBarItem(tabBarItem: tab)
-                        .onTapGesture {
-                            selection = tab
-                        }
-                }
+            CustomTabBar(selection: $selection)
+        }
+    }
+    
+    @ViewBuilder private func currentView(for tab: TabItem) -> some View {
+        switch tab {
+        case .home:
+            Text("Home")
+        case .live:
+            Text("Live")
+        case .message:
+            Text("Message")
+        case .profile:
+            Text("Profile")
+        }
+    }
+    
+}
+
+struct CustomTabBar: View {
+    @Binding var selection: TabItem
+    
+    var body: some View {
+        HStack {
+            ForEach(TabItem.allCases, id: \.self){ tab in
+                createTabBarItem(tab: tab, title: tab.title)
             }
         }
     }
     
-    func createTabBarItem(tabBarItem: TabBarItem) -> some View {
-        VStack {
-            Image(systemName: tabBarItem.icon)
-                .font(.system(size: 24, weight: .bold))
-                .foregroundStyle(selection == tabBarItem ? Color.accentColor : Color.gray.opacity(0.5))
-                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-            Text(tabBarItem.title)
-                .font(.system(size: 10))
-                .foregroundStyle(selection == tabBarItem ? Color.accentColor : Color.gray.opacity(0.5))
+    private func createTabBarItem(tab: TabItem, title: String) -> some View {
+        Button {
+            selection = tab
+        } label: {
+            VStack {
+                Image(systemName: tab.rawValue)
+                    .font(.system(size: 24, weight: .bold))
+                    .foregroundStyle(selection == tab ? Color.accentColor : Color.gray.opacity(0.5))
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                Text(title)
+                    .font(.system(size: 10))
+                    .foregroundStyle(selection == tab ? Color.accentColor : Color.gray.opacity(0.5))
+            }
         }
     }
 }
 
-struct TabBarItem: Hashable {
-    let title: String
-    let icon: String
+// Enum to define the tabs available in the app
+enum TabItem: String, CaseIterable {
+    case home = "rectangle.fill.on.rectangle.fill"
+    case live = "play.tv.fill"
+    case message = "message.fill"
+    case profile = "person.fill"
+    
+    var iconName: String {
+        self.rawValue
+    }
+    
+    var title: String {
+        switch self {
+        case .home:
+            return "Home"
+        case .live:
+            return "Live"
+        case .message:
+            return "Message"
+        case .profile:
+            return "Profile"
+        }
+    }
 }
 
 #Preview {
