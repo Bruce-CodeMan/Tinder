@@ -18,7 +18,7 @@ struct ContentView: View {
     @ViewBuilder private func currentView(for tab: TabItem) -> some View {
         switch tab {
         case .home:
-            Text("Home")
+            HomeScreen()
         case .live:
             Text("Live")
         case .message:
