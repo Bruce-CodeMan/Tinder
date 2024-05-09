@@ -34,18 +34,22 @@ struct UserCardView: View {
             }
             .padding(.top, 10)
             .padding(.horizontal)
-            HStack {
-                if offset.width > 0 {
-                    createUserCardLabel(title: "LIKE", degree: -20, color: Color.green)
-                    Spacer()
+            VStack{
+                HStack {
+                    if offset.width > 0 {
+                        createUserCardLabel(title: "LIKE", degree: -20, color: Color.green)
+                        Spacer()
+                    }
+                    if offset.width < 0 {
+                        Spacer()
+                        createUserCardLabel(title: "NOPE", degree: 20, color: Color.red)
+                    }
                 }
-                if offset.width < 0 {
-                    Spacer()
-                    createUserCardLabel(title: "NOPE", degree: 20, color: Color.red)
-                }
+                .padding(.horizontal, 30)
+                .padding(.top, 40)
+                Spacer()
+                createUserCardBottomInfo()
             }
-            .padding(.horizontal, 30)
-            .padding(.top, 40)
         }
         .offset(offset)
         .scaleEffect(getScaleAmount())
@@ -53,10 +57,14 @@ struct UserCardView: View {
         .gesture(
             DragGesture()
                 .onChanged { value in
-                    offset = value.translation
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        offset = value.translation
+                    }
                 }
                 .onEnded { value in
-                    offset = .zero
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        offset = .zero
+                    }
                 }
         )
         
@@ -72,6 +80,7 @@ struct UserCardView: View {
     // 喜欢和不喜欢的标志
     func createUserCardLabel(title: String, degree: Double, color: Color) -> some View {
         Text(title)
+            .tracking(3)
             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
             .padding(.horizontal)
@@ -97,6 +106,41 @@ struct UserCardView: View {
         let currentAmount = offset.width
         let percentage = currentAmount / max
         return Double(percentage * 10)
+    }
+    
+    // 底部信息
+    func createUserCardBottomInfo() -> some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 5) {
+                Text("\(userCard.name) . \(userCard.age)")
+                    .font(.system(size: 30))
+                    .fontWeight(.heavy)
+                HStack {
+                    Text(userCard.zodiac)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .padding(5)
+                        .background(Color.white.opacity(0.3))
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                    Text(userCard.place)
+                }
+            }
+            Spacer()
+            Button {
+                
+            } label: {
+                Image(systemName: "info.circle.fill")
+                    .font(.system(size: 30))
+                    .padding(8)
+            }
+        }
+        .foregroundStyle(Color.white)
+        .padding()
+        .background(
+            LinearGradient(colors: [.black.opacity(0.9), .clear], startPoint: .bottom, endPoint: .top)
+        )
+        .clipped()
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        
     }
 }
 
