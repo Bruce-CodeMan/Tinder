@@ -18,6 +18,8 @@
 		047955502BEC5D3B00B5E7EC /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479554F2BEC5D3B00B5E7EC /* HomeScreen.swift */; };
 		047955542BEC5D9F00B5E7EC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047955532BEC5D9F00B5E7EC /* HomeViewModel.swift */; };
 		047955562BEC62D600B5E7EC /* UserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047955552BEC62D600B5E7EC /* UserCardView.swift */; };
+		04E008C92BEDA89D00464309 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E008C82BEDA89D00464309 /* ButtonView.swift */; };
+		04E008CB2BEDA8CB00464309 /* ButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E008CA2BEDA8CB00464309 /* ButtonType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		0479554F2BEC5D3B00B5E7EC /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		047955532BEC5D9F00B5E7EC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		047955552BEC62D600B5E7EC /* UserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardView.swift; sourceTree = "<group>"; };
+		04E008C82BEDA89D00464309 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		04E008CA2BEDA8CB00464309 /* ButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 				0479554D2BEC5C5A00B5E7EC /* UserCard.swift */,
 				047955492BEB56EB00B5E7EC /* TabItem.swift */,
 				047955532BEC5D9F00B5E7EC /* HomeViewModel.swift */,
+				04E008CA2BEDA8CB00464309 /* ButtonType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -100,6 +105,7 @@
 				0479554B2BEB573A00B5E7EC /* CustomTabBar.swift */,
 				0479554F2BEC5D3B00B5E7EC /* HomeScreen.swift */,
 				047955552BEC62D600B5E7EC /* UserCardView.swift */,
+				04E008C82BEDA89D00464309 /* ButtonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,8 +188,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E008CB2BEDA8CB00464309 /* ButtonType.swift in Sources */,
 				047955452BEB52FF00B5E7EC /* AppState.swift in Sources */,
 				047955562BEC62D600B5E7EC /* UserCardView.swift in Sources */,
+				04E008C92BEDA89D00464309 /* ButtonView.swift in Sources */,
 				0479554C2BEB573A00B5E7EC /* CustomTabBar.swift in Sources */,
 				047955502BEC5D3B00B5E7EC /* HomeScreen.swift in Sources */,
 				047955542BEC5D9F00B5E7EC /* HomeViewModel.swift in Sources */,
