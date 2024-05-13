@@ -20,6 +20,7 @@
 		047955562BEC62D600B5E7EC /* UserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047955552BEC62D600B5E7EC /* UserCardView.swift */; };
 		04E008C92BEDA89D00464309 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E008C82BEDA89D00464309 /* ButtonView.swift */; };
 		04E008CB2BEDA8CB00464309 /* ButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E008CA2BEDA8CB00464309 /* ButtonType.swift */; };
+		04E008CD2BF1AC0200464309 /* CardContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E008CC2BF1AC0200464309 /* CardContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		047955552BEC62D600B5E7EC /* UserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardView.swift; sourceTree = "<group>"; };
 		04E008C82BEDA89D00464309 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		04E008CA2BEDA8CB00464309 /* ButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonType.swift; sourceTree = "<group>"; };
+		04E008CC2BF1AC0200464309 /* CardContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				0479554F2BEC5D3B00B5E7EC /* HomeScreen.swift */,
 				047955552BEC62D600B5E7EC /* UserCardView.swift */,
 				04E008C82BEDA89D00464309 /* ButtonView.swift */,
+				04E008CC2BF1AC0200464309 /* CardContainerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				04E008C92BEDA89D00464309 /* ButtonView.swift in Sources */,
 				0479554C2BEB573A00B5E7EC /* CustomTabBar.swift in Sources */,
 				047955502BEC5D3B00B5E7EC /* HomeScreen.swift in Sources */,
+				04E008CD2BF1AC0200464309 /* CardContainerView.swift in Sources */,
 				047955542BEC5D9F00B5E7EC /* HomeViewModel.swift in Sources */,
 				047955392BEB235000B5E7EC /* ContentView.swift in Sources */,
 				0479554A2BEB56EB00B5E7EC /* TabItem.swift in Sources */,

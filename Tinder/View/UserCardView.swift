@@ -2,6 +2,7 @@ import SwiftUI
 
 struct UserCardView: View {
     var userCard: UserCard
+    var swipeAction: (() -> Void)?
     @State var imageIndex = 0
     @State var offset: CGSize = .zero
     var body: some View {
@@ -9,64 +10,75 @@ struct UserCardView: View {
         GeometryReader { proxy in
             let frameWidth = proxy.size.width
             let frameHeight = proxy.size.height
-            Image(userCard.photos[imageIndex])
-                .resizable()
-                .frame(width: frameWidth, height: frameHeight)
-                .aspectRatio(contentMode: .fit)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-            HStack {
-                Rectangle()
-                    .onTapGesture {
-                        updateImageIndex(hasMoreIndex: false)
-                    }
-                Rectangle()
-                    .onTapGesture {
-                        updateImageIndex(hasMoreIndex: true)
-                    }
-            }
-            .foregroundStyle(Color.white.opacity(0.01))
-            HStack {
-                ForEach(0..<userCard.photos.count, id: \.self) { imageIndex in
-                    RoundedRectangle(cornerRadius: 10)
-                        .frame(height: 4)
-                        .foregroundColor(self.imageIndex == imageIndex ? Color.white : Color.gray)
-                }
-            }
-            .padding(.top, 10)
-            .padding(.horizontal)
-            VStack{
+            ZStack(alignment: .top) {
+                Image(userCard.photos[imageIndex])
+                    .resizable()
+                    .frame(width: frameWidth, height: frameHeight)
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                 HStack {
-                    if offset.width > 0 {
-                        createUserCardLabel(title: "LIKE", degree: -20, color: Color.green)
-                        Spacer()
-                    }
-                    if offset.width < 0 {
-                        Spacer()
-                        createUserCardLabel(title: "NOPE", degree: 20, color: Color.red)
+                    Rectangle()
+                        .onTapGesture {
+                            updateImageIndex(hasMoreIndex: false)
+                        }
+                    Rectangle()
+                        .onTapGesture {
+                            updateImageIndex(hasMoreIndex: true)
+                        }
+                }
+                .foregroundStyle(Color.white.opacity(0.01))
+                HStack {
+                    ForEach(0..<userCard.photos.count, id: \.self) { imageIndex in
+                        RoundedRectangle(cornerRadius: 10)
+                            .frame(height: 4)
+                            .foregroundColor(self.imageIndex == imageIndex ? Color.white : Color.gray)
                     }
                 }
-                .padding(.horizontal, 30)
-                .padding(.top, 40)
-                Spacer()
-                createUserCardBottomInfo()
+                .padding(.top, 10)
+                .padding(.horizontal)
+                VStack{
+                    HStack {
+                        if offset.width > 0 {
+                            createUserCardLabel(title: "LIKE", degree: -20, color: Color.green)
+                            Spacer()
+                        }
+                        if offset.width < 0 {
+                            Spacer()
+                            createUserCardLabel(title: "NOPE", degree: 20, color: Color.red)
+                        }
+                    }
+                    .padding(.horizontal, 30)
+                    .padding(.top, 40)
+                    Spacer()
+                    createUserCardBottomInfo()
+                }
             }
+            .offset(offset)
+            .scaleEffect(getScaleAmount())
+            .rotationEffect(Angle(degrees: getRotateAmount()))
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            offset = value.translation
+                        }
+                    }
+                    .onEnded { value in
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            let screenCutoff = frameWidth / 2 * 0.8
+                            let translation = value.translation.width
+                            let checkingStatus = translation > 0 ? translation : -translation
+                            if checkingStatus > screenCutoff {
+                                offset = CGSize(width: (translation > 0 ? frameWidth : -frameWidth) * 5, height: value.translation.height)
+                                swipeAction?()
+                            } else {
+                                offset = .zero
+                            }
+                        }
+                    }
+            )
         }
-        .offset(offset)
-        .scaleEffect(getScaleAmount())
-        .rotationEffect(Angle(degrees: getRotateAmount()))
-        .gesture(
-            DragGesture()
-                .onChanged { value in
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        offset = value.translation
-                    }
-                }
-                .onEnded { value in
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        offset = .zero
-                    }
-                }
-        )
+        
         
     }
     
@@ -135,6 +147,7 @@ struct UserCardView: View {
         }
         .foregroundStyle(Color.white)
         .padding()
+        .padding(.bottom, 60)
         .background(
             LinearGradient(colors: [.black.opacity(0.9), .clear], startPoint: .bottom, endPoint: .top)
         )

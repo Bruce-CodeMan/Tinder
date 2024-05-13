@@ -1,10 +1,3 @@
-//
-//  ButtonView.swift
-//  Tinder
-//
-//  Created by mac on 2024/5/10.
-//
-
 import SwiftUI
 
 struct ButtonView: View {
@@ -20,18 +13,14 @@ struct ButtonView: View {
                 .modifier(ColorButton(type: type))
                 .background(.black.opacity(0.4))
         }
-        .buttonStyle(PressScaleButton())
-    }
+        .buttonStyle(PressScaleButton())}
 }
-
 struct PressScaleButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .clipShape(Capsule())
-            .scaleEffect(configuration.isPressed ? 0.7 : 1.0)
-    }
+            .scaleEffect(configuration.isPressed ? 0.7 : 1.0)}
 }
-
 struct ColorButton: ViewModifier {
     var type: ButtonType
     func body(content: Content) -> some View {
@@ -53,7 +42,6 @@ struct ColorButton: ViewModifier {
         }
     }
 }
-
 #Preview {
     HStack{
         ForEach(ButtonType.allCases) { type in
